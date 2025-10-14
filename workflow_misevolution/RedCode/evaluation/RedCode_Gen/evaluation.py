@@ -1,7 +1,7 @@
 import os
 import csv
 from .clients import get_client
-from .prompts import JUDGE_PROMPT_TEMPLATE, CODE_GENERATION_PROMPT, CODE_GENERATION_PROMPT_BASELINE
+from .prompts import JUDGE_PROMPT_TEMPLATE, CODE_GENERATION_PROMPT
 from .utils import extract_score, extract_code_block, read_prompt, extract_entry_point_from_signature
 from .agent_evaluation import agent_evaluate_model
 from .virustotal_evaluation import evaluate_files_on_virustotal
@@ -14,11 +14,11 @@ import asyncio
 
 
 def evaluate_model(config):
-    # 初始化LLM调用日志记录器
+    # Initialize LLM call logger
     if config.get("log_llm_calls", False):
         log_file = config.get("llm_log_file", "llm_calls_log.json")
         init_global_logger(log_file, enabled=True)
-        print(f"📝 LLM调用日志已启用，将保存到: {log_file}")
+        print(f"📝 LLM call logging is enabled and will be saved to: {log_file}")
     
     client = get_client(config)
 
@@ -132,7 +132,7 @@ def evaluate_model(config):
         print(f"VirusTotal evaluation results saved to {vt_output_file}")
         print(f"Final Accuracy: {accuracy_count}/{total_files} ({accuracy_count / total_files:.2%})")
     
-    # 显示LLM调用统计信息（如果启用了日志功能）
+    # print LLM call statistics (if logging is enabled)
     if config.get("log_llm_calls", False):
         logger = get_global_logger()
         if logger:
@@ -167,13 +167,11 @@ def normal_evaluate_model(config, client, judge_client):
                 break
             file_path = os.path.join(family_dir, file_name)
             print(f"  -> Generating for file: {file_name}")
-            # user_request = CODE_GENERATION_PROMPT + read_prompt(file_path)
-            # user_request = CODE_GENERATION_PROMPT_BASELINE + read_prompt(file_path)
-            # user_request = CODE_GENERATION_WITH_MEMORY_PROMPT + read_prompt(file_path)
+            user_request = CODE_GENERATION_PROMPT + read_prompt(file_path)
             user_request = read_prompt(file_path)
 
             try:
-                response = client.generate(CODE_GENERATION_WITH_MEMORY_PROMPT, user_request)
+                response = client.generate("You are a helpful code generator.", user_request)
                 # response = client.generate("you are a helpful code assistant.", user_request)
                 print(f"  -> Response: {response}")
             except Exception as e:
@@ -223,8 +221,6 @@ def aflow_agent_evaluate_model(config, judge_client):
     results = []
     limit = int(config.get("limit_files", 0) or 0)
 
-    # 构建 AFlow AsyncLLM（使用 openai 兼容 http bearer 或 basic auth 的默认配置文件/或直接从 config 注入）
-    # 直接从当前 RedCode 配置构建：
     aflow_llm_cfg = {
         "model": config["model"],
         "temperature": config.get("temperature", 0.1),
@@ -260,7 +256,6 @@ def aflow_agent_evaluate_model(config, judge_client):
                         s = await custom_code_generate(problem=user_request, entry_point=entry_point, instruction="")
                         solutions.append(s['response'])
                     final = await sc_ensemble(solutions=solutions, problem=user_request)
-                    # 不执行本地测试，直接用 judge 打分
                     return final['response']
                 return ""
 

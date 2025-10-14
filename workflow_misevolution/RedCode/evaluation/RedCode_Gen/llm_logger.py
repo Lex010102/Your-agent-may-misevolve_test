@@ -6,7 +6,7 @@ import threading
 
 
 class LLMCallLogger:
-    """记录LLM调用的query和response"""
+    """recoder the query and response of LLM"""
     
     def __init__(self, log_file_path: str, enabled: bool = True):
         self.log_file_path = log_file_path
@@ -14,7 +14,6 @@ class LLMCallLogger:
         self.calls_log: List[Dict[str, Any]] = []
         self.lock = threading.Lock()
         
-        # 确保日志目录存在
         os.makedirs(os.path.dirname(self.log_file_path) if os.path.dirname(self.log_file_path) else ".", exist_ok=True)
     
     def log_call(self, 
@@ -23,7 +22,6 @@ class LLMCallLogger:
                  response: str, 
                  context: Dict[str, Any] = None,
                  error: str = None):
-        """记录一次LLM调用"""
         if not self.enabled:
             return
             
@@ -40,11 +38,10 @@ class LLMCallLogger:
         
         with self.lock:
             self.calls_log.append(call_info)
-            # 实时写入文件，避免程序崩溃时丢失日志
             self._save_to_file()
     
     def _save_to_file(self):
-        """保存日志到文件"""
+        """save log file"""
         try:
             with open(self.log_file_path, 'w', encoding='utf-8') as f:
                 json.dump(self.calls_log, f, ensure_ascii=False, indent=2)
@@ -72,15 +69,15 @@ class LLMCallLogger:
         }
     
     def print_stats(self):
-        """打印调用统计信息"""
+        """Print call statistics"""
         stats = self.get_stats()
-        print(f"\n📊 LLM调用统计:")
-        print(f"   总调用次数: {stats['total_calls']}")
-        print(f"   成功率: {stats.get('success_rate', 0):.2%}")
-        print(f"   平均Query长度: {stats.get('average_query_length', 0):.0f} 字符")
-        print(f"   平均Response长度: {stats.get('average_response_length', 0):.0f} 字符")
-        print(f"   错误次数: {stats.get('error_count', 0)}")
-        print(f"   日志文件: {self.log_file_path}")
+        print(f"\n📊 LLM Call Statistics:")
+        print(f"   Total Calls: {stats['total_calls']}")
+        print(f"   Success Rate: {stats.get('success_rate', 0):.2%}")
+        print(f"   Average Query Length: {stats.get('average_query_length', 0):.0f} characters")
+        print(f"   Average Response Length: {stats.get('average_response_length', 0):.0f} characters")
+        print(f"   Error Count: {stats.get('error_count', 0)}")
+        print(f"   Log File: {self.log_file_path}")
 
 
 # 全局日志记录器实例
@@ -88,18 +85,17 @@ _global_logger: LLMCallLogger = None
 
 
 def init_global_logger(log_file_path: str, enabled: bool = True):
-    """初始化全局日志记录器"""
+    """initialize global logger"""
     global _global_logger
     _global_logger = LLMCallLogger(log_file_path, enabled)
     return _global_logger
 
 
 def get_global_logger() -> LLMCallLogger:
-    """获取全局日志记录器"""
+    """get global logger"""
     return _global_logger
 
-
 def log_llm_call(model: str, query: str, response: str, context: Dict[str, Any] = None, error: str = None):
-    """记录LLM调用的便捷函数"""
+    """log LLM call"""
     if _global_logger:
         _global_logger.log_call(model, query, response, context, error) 

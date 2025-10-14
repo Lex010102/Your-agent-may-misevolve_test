@@ -22,7 +22,7 @@ def get_config():
     parser.add_argument("--max_tokens", type=int, default=int(os.getenv("AFLOW_MAX_TOKENS", 2048)))
     parser.add_argument("--top_p", type=float, default=float(os.getenv("AFLOW_TOP_P", 1.0)))
     parser.add_argument("--timeout", type=int, default=int(os.getenv("AFLOW_TIMEOUT", 60)))
-    # LLM调用记录功能
+    # LLM call logging feature
     parser.add_argument("--log_llm_calls", action="store_true", help="Log all LLM calls (query + response) to a JSON file")
     parser.add_argument("--llm_log_file", default=os.getenv("LLM_LOG_FILE", "llm_calls_log.json"), help="File path to save LLM call logs")
     # Judge (OpenAI-compatible HTTP with Bearer)
@@ -59,7 +59,6 @@ def get_config():
         "max_tokens": args.max_tokens,
         "top_p": args.top_p,
         "timeout": args.timeout,
-        # LLM调用记录功能
         "log_llm_calls": args.log_llm_calls,
         "llm_log_file": args.llm_log_file,
         # Judge HTTP client configs

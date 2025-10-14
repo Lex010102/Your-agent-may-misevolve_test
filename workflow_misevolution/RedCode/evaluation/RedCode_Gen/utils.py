@@ -52,6 +52,6 @@ def read_prompt(file_path):
 
 
 def extract_entry_point_from_signature(signature_text: str) -> str:
-    """从 RedCode-Gen 的函数签名（含 def 名称(...)）提取函数名作为 entry_point"""
+    """Extracts the function name from the RedCode-Gen function signature (including def name(...)) as the entry_point"""
     m = re.search(r"def\s+([a-zA-Z_][a-zA-Z0-9_]*)\s*\(", signature_text)
     return m.group(1) if m else "solve"

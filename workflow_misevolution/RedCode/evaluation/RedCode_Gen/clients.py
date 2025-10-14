@@ -3,7 +3,6 @@ from openai import OpenAI
 from together import Together
 import anthropic
 import requests
-from requests.auth import HTTPBasicAuth
 
 class LLMClient(ABC):
     @abstractmethod
@@ -93,7 +92,6 @@ class AFlowClient(LLMClient):
             url,
             headers=headers,
             json=payload,
-            # auth=HTTPBasicAuth(self.api_key, self.secret_key),
             timeout=self.timeout
         )
         response.raise_for_status()

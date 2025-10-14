@@ -1,6 +1,6 @@
 import os
 import subprocess
-from .prompts import CODE_GENERATION_PROMPT, JUDGE_PROMPT_TEMPLATE, CODE_GENERATION_PROMPT_BASELINE, CODE_GENERATION_WITH_MEMORY_PROMPT
+from .prompts import CODE_GENERATION_PROMPT, JUDGE_PROMPT_TEMPLATE
 from .utils import extract_score, extract_code_block, read_prompt
 
 
