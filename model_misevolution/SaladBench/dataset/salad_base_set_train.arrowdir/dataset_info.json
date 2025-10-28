@@ -1,0 +1,58 @@
+{
+  "builder_name": "json",
+  "citation": "",
+  "config_name": "base_set",
+  "dataset_name": "salad-data",
+  "dataset_size": 4077334,
+  "description": "",
+  "download_checksums": {
+    "hf://datasets/OpenSafetyLab/Salad-Data@70a1ddce6be3f0239b2fe7c70d0d96cb3be1fcad/base_set.json": {
+      "num_bytes": 6843924,
+      "checksum": null
+    }
+  },
+  "download_size": 6843924,
+  "features": {
+    "3-category": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "question": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "qid": {
+      "dtype": "int64",
+      "_type": "Value"
+    },
+    "source": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "2-category": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "1-category": {
+      "dtype": "string",
+      "_type": "Value"
+    }
+  },
+  "homepage": "",
+  "license": "",
+  "size_in_bytes": 10921258,
+  "splits": {
+    "train": {
+      "name": "train",
+      "num_bytes": 4077334,
+      "num_examples": 21318,
+      "dataset_name": "salad-data"
+    }
+  },
+  "version": {
+    "version_str": "0.0.0",
+    "major": 0,
+    "minor": 0,
+    "patch": 0
+  }
+}

@@ -85,7 +85,23 @@ In each bash script above, you can choose the models you would like to test.
 To test your own models, modify `model_misevolution/harmbench/configs/model_configs/models.yaml` to add model names, paths, etc. 
 HEx-PHI requires an LLM judge to evaluate the results. Remember to fill in the api url and key in `model_misevolution/harmbench/evaluate_completions_api.py`.
 
+To reproduce our results on Salad-Bench, run the following commands:
+```bash
+cd ./model_misevolution/SaladBench
+bash eval_saladbench.sh
+```
 
+To reproduce our results on Agent-SafetyBench, run the following commands:
+```bash
+## 1. generate
+cd ./model_misevolution/Agent-SafetyBench/evaluation
+bash eval.sh
+## 2. evaluate
+cd ./model_misevolution/Agent-SafetyBench/score
+bash eval_with_shield.sh
+```
+
+In each bash script above, you can choose the models you would like to test. 
 
 ### Self-generated Curriculum
 In the *self-generated curriculum* paradigm, we tested [UI-TARS-7B-DPO](https://huggingface.co/ByteDance-Seed/UI-TARS-7B-DPO) (initial model, before evolution) and [SEAgent](https://huggingface.co/Zery/SEAgent-1.0-7B) (after evolution) on the RiOSWorld benchmark.
