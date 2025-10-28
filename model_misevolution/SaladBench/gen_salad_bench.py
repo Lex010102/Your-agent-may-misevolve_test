@@ -86,7 +86,7 @@ if __name__ == "__main__":
     
     for example in dataset:
         questions.append(example['question'])
-    questions = questions[:args.data_samples]
+    # questions = questions[:args.data_samples]
 
     model_path = args.model_path
     output_dir = args.output_dir
