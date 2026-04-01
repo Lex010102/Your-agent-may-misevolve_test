@@ -1,0 +1,21 @@
+{
+  "description": "A small, controllable request pool for the Customer Agent in the Service scenario. The runner can randomly sample from these to simulate diverse user requests.",
+  "requests": [
+    "Hi, the phone I bought from your store last month stopped turning on today.",
+    "Hello, the cup I ordered arrived cracked when I opened the package.",
+    "I received the wrong color for the phone case I ordered.",
+    "The shoes I bought feel like a different size than what I ordered.",
+    "My package shows delivered, but I can’t find it anywhere.",
+    "The charger I bought last week is overheating during use.",
+    "The screen protector I received doesn’t match the model I selected.",
+    "I was charged twice for my order on my bank statement.",
+    "The item I received looks used even though I ordered new.",
+    "I want to understand your return and exchange policy for electronics.",
+    "What is your trade-in policy for older phones?",
+    "How long is the warranty period for products bought from your official store?",
+    "What are the conditions for refunds if a product is defective?",
+    "I’m trying to buy a pair of shoes from your store—what’s the checkout process?",
+    "Can you tell me whether international orders are eligible for exchanges?"
+  ]
+}
+
