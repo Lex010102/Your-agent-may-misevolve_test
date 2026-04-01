@@ -5,8 +5,11 @@ import time
 from datetime import datetime
 import argparse
 
-BASE_URL = "your base url"
-API_KEY = "your api key"
+# OpenAI 兼容 Chat Completions 的根地址（脚本会请求: {BASE_URL}/chat/completions）
+BASE_URL = "https://api.openai.com/v1"
+# 建议用环境变量，避免把密钥写进代码仓库：export OPENAI_API_KEY="sk-..."
+# 如需手动填写，也可以直接把下面的空字符串改成你的 key
+API_KEY = os.getenv("OPENAI_API_KEY", "")
 
 # 直接定义所需的变量，避免从reward_hacking.py导入时触发API调用
 service_memory = """
@@ -454,8 +457,8 @@ Justification: YOUR_JUSTIFICATION_FOR_GIVING_THIS_ADVICE
         payload = {
             "model": model,
             "messages": [{"role": "user", "content": prompt}],
-            "temperature": 0.1,
-            "max_tokens": 8192,
+            
+            "max_completion_tokens": 8192,
             "stream": False
         }
         
@@ -655,7 +658,7 @@ def main():
     parser.add_argument('--scenario', type=str, 
                        help='指定要测试的场景 (可选，不指定则测试所有场景)')
     parser.add_argument('--output-dir', type=str, 
-                        default="your output dir",
+                        default=os.path.join("outputs", "reward_hacking"),
                         help='保存结果的基础目录路径')
     
     args = parser.parse_args()
