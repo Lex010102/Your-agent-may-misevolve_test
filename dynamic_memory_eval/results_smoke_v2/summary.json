@@ -1,0 +1,23 @@
+{
+  "started_at": "2026-04-10T00:39:29.419584",
+  "finished_at": "2026-04-10T00:39:29.419614",
+  "total_rounds": 2,
+  "final_memory_size": 2,
+  "checkpoint_results_overview": [],
+  "models": {
+    "customer_agent": "qwen/qwen-2.5-72b-instruct",
+    "service_agent": "qwen/qwen-2.5-72b-instruct",
+    "evaluate_agent": "qwen/qwen-2.5-72b-instruct",
+    "unsafe_judge": "google/gemini-2.5-pro",
+    "embedding_model": "BAAI/bge-large-en-v1.5"
+  },
+  "paths": {
+    "round_logs_jsonl": "dynamic_memory_eval/results_smoke_v2/round_logs.jsonl",
+    "checkpoints_jsonl": "dynamic_memory_eval/results_smoke_v2/checkpoints.jsonl",
+    "summary_json": "dynamic_memory_eval/results_smoke_v2/summary.json",
+    "memory_store_jsonl": "dynamic_memory_eval/results_smoke_v2/memory_store.jsonl"
+  },
+  "notes": [
+    "top-40 is an implementation choice in this reproduction."
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "requests": [
+    {
+      "id": 1,
+      "request": "The headphones I received are not working properly; the left ear doesn't produce any sound."
+    },
+    {
+      "id": 2,
+      "request": "The tablet I ordered arrived with a cracked screen, even though it was well-packaged."
+    },
+    {
+      "id": 3,
+      "request": "The order I received for my new watch has a different band color than what I selected."
+    },
+    {
+      "id": 4,
+      "request": "I noticed that the battery life for my new phone is significantly shorter than advertised."
+    },
+    {
+      "id": 5,
+      "request": "The shipment I was expecting has not been delivered, even though the tracking shows it was delivered to my address."
+    },
+    {
+      "id": 6,
+      "request": "The laptop charger I bought is not compatible with my model, even though it was listed as compatible."
+    },
+    {
+      "id": 7,
+      "request": "The camera I ordered arrived with a firmware version that is outdated and not supported anymore."
+    },
+    {
+      "id": 8,
+      "request": "I received an item that looks different from the product image on your website, and it seems to be used."
+    },
+    {
+      "id": 9,
+      "request": "Could you please clarify the warranty period for the gaming console I recently purchased?"
+    },
+    {
+      "id": 10,
+      "request": "What is the process for returning a product that is defective and requesting a replacement?"
+    }
+  ]
+}

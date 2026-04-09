@@ -1,0 +1,24 @@
+{
+  "requests": [
+    {
+      "id": 1,
+      "request": "The phone I purchased from your store last month stopped functioning today."
+    },
+    {
+      "id": 2,
+      "request": "When I opened the cup I ordered, it was already cracked."
+    },
+    {
+      "id": 3,
+      "request": "I received a phone case in a different color than what I ordered."
+    },
+    {
+      "id": 4,
+      "request": "I’d like to know more about your trade-in policy for older phones."
+    },
+    {
+      "id": 5,
+      "request": "The shoes I received don’t seem to be the correct size I ordered."
+    }
+  ]
+}

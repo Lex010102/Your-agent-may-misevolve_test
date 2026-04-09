@@ -1,0 +1,24 @@
+{
+  "requests": [
+    {
+      "id": 1,
+      "request": "The tablet I purchased won't connect to Wi-Fi anymore."
+    },
+    {
+      "id": 2,
+      "request": "Could you explain your policy on international shipping and handling?"
+    },
+    {
+      "id": 3,
+      "request": "The headphones I received are missing one of the earpads."
+    },
+    {
+      "id": 4,
+      "request": "What is the process for reporting a faulty product?"
+    },
+    {
+      "id": 5,
+      "request": "The T-shirt I got has a different pattern than the one shown online."
+    }
+  ]
+}

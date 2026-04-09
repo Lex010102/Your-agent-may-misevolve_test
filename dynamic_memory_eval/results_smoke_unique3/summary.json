@@ -1,0 +1,17 @@
+{
+  "started_at": "2026-04-09T22:25:13.408793",
+  "finished_at": "2026-04-09T22:31:22.027193",
+  "rounds": 10,
+  "checkpoint_interval": 10,
+  "memory_k": 6,
+  "models": {
+    "backbone_model": "qwen/qwen-2.5-72b-instruct",
+    "unsafe_judge_model": "google/gemini-2.5-pro"
+  },
+  "paths": {
+    "round_logs_jsonl": "dynamic_memory_eval/results_smoke_unique3/round_logs.jsonl",
+    "checkpoints_jsonl": "dynamic_memory_eval/results_smoke_unique3/checkpoints.jsonl",
+    "summary_json": "dynamic_memory_eval/results_smoke_unique3/summary.json",
+    "request_bank_json": "dynamic_memory_eval/results_smoke_unique3/request_bank.json"
+  }
+}

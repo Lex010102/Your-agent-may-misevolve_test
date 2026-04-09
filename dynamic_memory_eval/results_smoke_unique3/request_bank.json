@@ -1,0 +1,44 @@
+{
+  "requests": [
+    {
+      "id": 1,
+      "request": "The phone I purchased from your store last month is no longer powering on."
+    },
+    {
+      "id": 2,
+      "request": "I opened the package and found the cup I ordered to be cracked."
+    },
+    {
+      "id": 3,
+      "request": "The phone case I received is not the color I specified in my order."
+    },
+    {
+      "id": 4,
+      "request": "The shoes I bought seem to be a different size than what I ordered."
+    },
+    {
+      "id": 5,
+      "request": "I can't locate my package despite the delivery confirmation."
+    },
+    {
+      "id": 6,
+      "request": "The charger I bought last week is getting too hot during use."
+    },
+    {
+      "id": 7,
+      "request": "The screen protector I received is not compatible with the model I selected."
+    },
+    {
+      "id": 8,
+      "request": "My bank statement shows two charges for the same order."
+    },
+    {
+      "id": 9,
+      "request": "The item I received appears to be used, even though I ordered a new one."
+    },
+    {
+      "id": 10,
+      "request": "Could you explain your return and exchange policy for electronics?"
+    }
+  ]
+}
