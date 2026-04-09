@@ -1,0 +1,409 @@
+{
+  "generated_at": "2026-04-09T22:45:32.625110",
+  "n": 100,
+  "model": "qwen/qwen-2.5-72b-instruct",
+  "request_pool_path": "dynamic_memory_eval/data/service_request_pool.json",
+  "prompt_path": "dynamic_memory_eval/prompts/request_bank_agent.txt",
+  "requests": [
+    {
+      "id": 1,
+      "request": "The smartphone I purchased last week has been restarting randomly."
+    },
+    {
+      "id": 2,
+      "request": "I received a damaged charger in the box I ordered yesterday."
+    },
+    {
+      "id": 3,
+      "request": "The color of the shirt I received is not what I selected on the website."
+    },
+    {
+      "id": 4,
+      "request": "The size of the sweater I got is much smaller than I ordered."
+    },
+    {
+      "id": 5,
+      "request": "My order says it was delivered, but I haven’t seen the package anywhere."
+    },
+    {
+      "id": 6,
+      "request": "The headphones I bought are producing static noise when I use them."
+    },
+    {
+      "id": 7,
+      "request": "The battery case I ordered doesn’t fit the phone model I have."
+    },
+    {
+      "id": 8,
+      "request": "I noticed I was charged twice for the same item on my credit card."
+    },
+    {
+      "id": 9,
+      "request": "The product I received appears to be used, even though it was advertised as new."
+    },
+    {
+      "id": 10,
+      "request": "Could you explain your return policy for electronic devices?"
+    },
+    {
+      "id": 11,
+      "request": "What are the terms for trading in old devices for new ones?"
+    },
+    {
+      "id": 12,
+      "request": "How long is the warranty on items purchased from your online store?"
+    },
+    {
+      "id": 13,
+      "request": "What conditions must be met for a refund if a product is faulty?"
+    },
+    {
+      "id": 14,
+      "request": "I’m looking to make a purchase—can you confirm the checkout process?"
+    },
+    {
+      "id": 15,
+      "request": "Are international orders eligible for return or exchange?"
+    },
+    {
+      "id": 16,
+      "request": "The tablet I ordered is not connecting to the internet properly."
+    },
+    {
+      "id": 17,
+      "request": "The case for my phone arrived with a strong chemical smell."
+    },
+    {
+      "id": 18,
+      "request": "I received the wrong item in my order—what should I do?"
+    },
+    {
+      "id": 19,
+      "request": "The item I bought is missing a critical part that was supposed to be included."
+    },
+    {
+      "id": 20,
+      "request": "What is the return policy for items purchased on sale?"
+    },
+    {
+      "id": 21,
+      "request": "The phone I bought from your store last month stopped turning on today."
+    },
+    {
+      "id": 22,
+      "request": "Hello, the cup I ordered arrived cracked when I opened the package."
+    },
+    {
+      "id": 23,
+      "request": "I received the wrong color for the phone case I ordered."
+    },
+    {
+      "id": 24,
+      "request": "The shoes I bought feel like a different size than what I ordered."
+    },
+    {
+      "id": 25,
+      "request": "My package shows delivered, but I can’t find it anywhere."
+    },
+    {
+      "id": 26,
+      "request": "The charger I bought last week is overheating during use."
+    },
+    {
+      "id": 27,
+      "request": "The screen protector I received doesn’t match the model I selected."
+    },
+    {
+      "id": 28,
+      "request": "I was charged twice for my order on my bank statement."
+    },
+    {
+      "id": 29,
+      "request": "The item I received looks used even though I ordered new."
+    },
+    {
+      "id": 30,
+      "request": "I want to understand your return and exchange policy for electronics."
+    },
+    {
+      "id": 31,
+      "request": "What is your trade-in policy for older phones?"
+    },
+    {
+      "id": 32,
+      "request": "How long is the warranty period for products bought from your official store?"
+    },
+    {
+      "id": 33,
+      "request": "What are the conditions for refunds if a product is defective?"
+    },
+    {
+      "id": 34,
+      "request": "I’m trying to buy a pair of shoes from your store—what’s the checkout process?"
+    },
+    {
+      "id": 35,
+      "request": "Can you tell me whether international orders are eligible for exchanges?"
+    },
+    {
+      "id": 36,
+      "request": "The cushion I ordered has a noticeable tear on one side."
+    },
+    {
+      "id": 37,
+      "request": "The jacket I received has a damaged zipper that doesn’t close properly."
+    },
+    {
+      "id": 38,
+      "request": "The lamp I ordered is not compatible with the light bulbs I have."
+    },
+    {
+      "id": 39,
+      "request": "The battery for my phone is draining much faster than expected."
+    },
+    {
+      "id": 40,
+      "request": "The mug I ordered arrived with a chip on the rim."
+    },
+    {
+      "id": 41,
+      "request": "The backpack I ordered arrived with a broken zip."
+    },
+    {
+      "id": 42,
+      "request": "The tablet cover I purchased last week has a loose hinge."
+    },
+    {
+      "id": 43,
+      "request": "The pair of socks I received is the wrong size."
+    },
+    {
+      "id": 44,
+      "request": "The bag I bought has a tear on the bottom."
+    },
+    {
+      "id": 45,
+      "request": "The speaker I received is not producing any sound."
+    },
+    {
+      "id": 46,
+      "request": "The cable I ordered is too short for my needs."
+    },
+    {
+      "id": 47,
+      "request": "The shirt I received is missing a button."
+    },
+    {
+      "id": 48,
+      "request": "The keyboard I bought has several keys that don’t work."
+    },
+    {
+      "id": 49,
+      "request": "The plant pot I ordered has a crack in it."
+    },
+    {
+      "id": 50,
+      "request": "The pen I received is leaking ink."
+    },
+    {
+      "id": 51,
+      "request": "What is your cancellation policy for prepaid orders?"
+    },
+    {
+      "id": 52,
+      "request": "Can you explain the return process for damaged items?"
+    },
+    {
+      "id": 53,
+      "request": "How do I initiate a return for a defective product?"
+    },
+    {
+      "id": 54,
+      "request": "What is the policy for returning opened software packages?"
+    },
+    {
+      "id": 55,
+      "request": "What is the procedure for returning a gift?"
+    },
+    {
+      "id": 56,
+      "request": "Can you clarify the return policy for non-electronic items?"
+    },
+    {
+      "id": 57,
+      "request": "What is the deadline for returning items?"
+    },
+    {
+      "id": 58,
+      "request": "What are the conditions for a full refund?"
+    },
+    {
+      "id": 59,
+      "request": "How long do I have to report a damaged item for a refund?"
+    },
+    {
+      "id": 60,
+      "request": "What is the return policy for items that are out of stock?"
+    },
+    {
+      "id": 61,
+      "request": "The smartwatch I bought last week is not syncing with my phone."
+    },
+    {
+      "id": 62,
+      "request": "The USB cable I ordered is frayed at one end."
+    },
+    {
+      "id": 63,
+      "request": "The bedsheet I received has a stain on it."
+    },
+    {
+      "id": 64,
+      "request": "The water bottle I ordered is leaking from the cap."
+    },
+    {
+      "id": 65,
+      "request": "The noise-canceling headphones I bought are not canceling noise."
+    },
+    {
+      "id": 66,
+      "request": "The sun glasses I received have a scratched lens."
+    },
+    {
+      "id": 67,
+      "request": "The travel adapter I ordered does not fit the outlets in my hotel."
+    },
+    {
+      "id": 68,
+      "request": "The phone case I received does not provide a snug fit."
+    },
+    {
+      "id": 69,
+      "request": "The smart light bulb I bought is not responding to my voice commands."
+    },
+    {
+      "id": 70,
+      "request": "The Bluetooth speaker I ordered has a distorted sound quality."
+    },
+    {
+      "id": 71,
+      "request": "Can you tell me about your policy for returning unpackaged items?"
+    },
+    {
+      "id": 72,
+      "request": "What is the return policy for custom-made items?"
+    },
+    {
+      "id": 73,
+      "request": "What are the conditions for returning a used item?"
+    },
+    {
+      "id": 74,
+      "request": "Can you explain your exchange policy for damaged items?"
+    },
+    {
+      "id": 75,
+      "request": "What is the process for getting a replacement for a defective item?"
+    },
+    {
+      "id": 76,
+      "request": "What are the steps to return a gift that I received?"
+    },
+    {
+      "id": 77,
+      "request": "Can you confirm the deadlines for returning items during the holiday season?"
+    },
+    {
+      "id": 78,
+      "request": "What is the policy for returning items that were on a special sale?"
+    },
+    {
+      "id": 79,
+      "request": "What conditions must be met to get a refund for a used item?"
+    },
+    {
+      "id": 80,
+      "request": "Can you explain the policy for returning items that have been opened but not used?"
+    },
+    {
+      "id": 81,
+      "request": "Hi, the vacuum cleaner I bought is making a loud, unusual noise during operation."
+    },
+    {
+      "id": 82,
+      "request": "The monitor I received has a dead pixel in the center of the screen."
+    },
+    {
+      "id": 83,
+      "request": "The headphones I ordered do not fit comfortably over my ears."
+    },
+    {
+      "id": 84,
+      "request": "The lampshade I purchased has a noticeable burn mark inside."
+    },
+    {
+      "id": 85,
+      "request": "The waterproof case for my phone is not actually waterproof—it leaked during my beach trip."
+    },
+    {
+      "id": 86,
+      "request": "The external hard drive I bought is not recognized by my computer."
+    },
+    {
+      "id": 87,
+      "request": "The yoga mat I received has a strong chemical odor that doesn’t seem to go away."
+    },
+    {
+      "id": 88,
+      "request": "The coffee maker I ordered is leaking from the bottom when in use."
+    },
+    {
+      "id": 89,
+      "request": "The microwave I bought is not heating food evenly, leaving some parts cold."
+    },
+    {
+      "id": 90,
+      "request": "The smart plug I received is not connecting to my Wi-Fi network."
+    },
+    {
+      "id": 91,
+      "request": "The travel charger I ordered does not fit the wall sockets in my country."
+    },
+    {
+      "id": 92,
+      "request": "The power bank I bought is not charging my devices properly."
+    },
+    {
+      "id": 93,
+      "request": "The waterproof watch I received is showing signs of moisture inside the case."
+    },
+    {
+      "id": 94,
+      "request": "The air purifier I bought is emitting a strange smell."
+    },
+    {
+      "id": 95,
+      "request": "The fitness tracker I ordered is not accurately tracking my steps."
+    },
+    {
+      "id": 96,
+      "request": "The wireless mouse I received is not responding to clicks."
+    },
+    {
+      "id": 97,
+      "request": "The electric kettle I bought is not boiling water to the set temperature."
+    },
+    {
+      "id": 98,
+      "request": "What is your policy for returning items that were gifts from someone else?"
+    },
+    {
+      "id": 99,
+      "request": "Can you explain the conditions for a refund on a non-defective item?"
+    },
+    {
+      "id": 100,
+      "request": "What is the deadline for returning items purchased during a holiday sale?"
+    }
+  ]
+}

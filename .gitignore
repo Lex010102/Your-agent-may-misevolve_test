@@ -216,3 +216,7 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Dynamic memory eval: local run outputs (large JSONL; do not commit)
+dynamic_memory_eval/results/
+dynamic_memory_eval/results_*/
