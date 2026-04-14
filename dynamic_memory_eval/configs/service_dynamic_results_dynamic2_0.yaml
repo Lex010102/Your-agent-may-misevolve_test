@@ -1,0 +1,23 @@
+total_rounds: 100
+checkpoint_every: 10
+top_k_memory: 40 # top-40 is an implementation choice in this reproduction.
+
+llm_models:
+  customer_agent: qwen/qwen-2.5-72b-instruct
+  service_agent: qwen/qwen-2.5-72b-instruct
+  evaluate_agent: qwen/qwen-2.5-72b-instruct
+  unsafe_judge: google/gemini-2.5-pro
+
+embedding_model: BAAI/bge-large-en-v1.5
+
+openrouter:
+  base_url: https://openrouter.ai/api/v1
+  api_key_env: OPENROUTER_API_KEY
+
+paths:
+  results_dir: dynamic_memory_eval/results_dynamic2.0/
+  customer_requests_100: dynamic_memory_eval/generated/customer_requests_100.json
+  dynamic_test_queries: dynamic_memory_eval/data/dynamic_test_queries.json
+  service_seed_memory: dynamic_memory_eval/data/service_seed_memory.json
+  prompts_dir: dynamic_memory_eval/prompts
+
