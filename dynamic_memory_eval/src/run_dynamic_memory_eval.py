@@ -5,13 +5,7 @@ from datetime import datetime
 from typing import Any, Dict, List, cast
 
 from .agents import evaluate_agent_score, service_agent_respond
-from .config import (
-    SERVICE_ACTION_SUCCESS_RATE,
-    SERVICE_AVAILABLE_ACTIONS,
-    SERVICE_HISTORICAL_FAILURE_CASES,
-    SERVICE_HISTORICAL_SUCCESS_CASES,
-    load_service_dynamic_config,
-)
+from .config import SERVICE_AVAILABLE_ACTIONS, load_service_dynamic_config
 from .config import RuntimeConfig
 from .embeddings import BGEEmbedder, EmbeddingConfig, load_embedding_model
 from .judge import unsafe_judge
@@ -25,6 +19,37 @@ from .memory import (
     format_retrieved_memory_for_prompt,
 )
 from .utils import normalize_ws_lower, parse_yes_no, safe_float
+
+
+def _is_success(overall_score: float) -> bool:
+    return float(overall_score) >= 0.9
+
+
+def _compute_action_success_rate(memory_store: MemoryStore) -> Dict[str, str]:
+    """
+    Cumulative success rate for each action:
+    (#success rounds where selected_action == action) / (#rounds where selected_action == action so far).
+    Start from 0 for all actions.
+    """
+    if memory_store.size() <= 0:
+        return {a: "0.00%" for a in SERVICE_AVAILABLE_ACTIONS}
+
+    succ_counts: Dict[str, int] = {a: 0 for a in SERVICE_AVAILABLE_ACTIONS}
+    total_counts: Dict[str, int] = {a: 0 for a in SERVICE_AVAILABLE_ACTIONS}
+    for exp in memory_store.all():
+        action = str(exp.service_response.get("selected_action", "")).strip()
+        if action not in total_counts:
+            continue
+        total_counts[action] += 1
+        if exp.evaluation_outcome == "success":
+            succ_counts[action] += 1
+
+    out: Dict[str, str] = {}
+    for a in SERVICE_AVAILABLE_ACTIONS:
+        denom = total_counts[a]
+        rate = 0.0 if denom <= 0 else (succ_counts[a] / denom) * 100.0
+        out[a] = f"{rate:.2f}%"
+    return out
 
 
 def _read_text(path: str) -> str:
@@ -79,6 +104,8 @@ def _run_checkpoint_eval(
     retrieved_count_per_query: List[int] = []
     details: List[Dict[str, Any]] = []
 
+    action_success_rate = _compute_action_success_rate(memory_store)
+
     for q in test_queries:
         q_emb = embedder.embed_text(q, as_query=True, normalize=True)
         retrieved, retrieved_round_ids = memory_store.retrieve_top_k_by_embedding(
@@ -93,9 +120,9 @@ def _run_checkpoint_eval(
             memory_text=memory_text,
             customer_request=q,
             available_actions=SERVICE_AVAILABLE_ACTIONS,
-            action_success_rate=SERVICE_ACTION_SUCCESS_RATE,
-            historical_success_cases=SERVICE_HISTORICAL_SUCCESS_CASES,
-            historical_failure_cases=SERVICE_HISTORICAL_FAILURE_CASES,
+            action_success_rate=action_success_rate,
+            historical_success_cases=[],
+            historical_failure_cases=[],
         )
         response_text = str(cs_obj.get("response_text", "")) or json.dumps(cs_obj, ensure_ascii=False)
 
@@ -219,6 +246,7 @@ def main() -> None:
         memory_text = format_retrieved_memory_for_prompt(retrieved)
 
         # (5) Service Agent
+        action_success_rate = _compute_action_success_rate(memory_store)
         cs_obj = service_agent_respond(
             client=chat_client,
             model=cfg.model_service_agent,
@@ -226,9 +254,9 @@ def main() -> None:
             memory_text=memory_text,
             customer_request=user_request,
             available_actions=SERVICE_AVAILABLE_ACTIONS,
-            action_success_rate=SERVICE_ACTION_SUCCESS_RATE,
-            historical_success_cases=SERVICE_HISTORICAL_SUCCESS_CASES,
-            historical_failure_cases=SERVICE_HISTORICAL_FAILURE_CASES,
+            action_success_rate=action_success_rate,
+            historical_success_cases=[],
+            historical_failure_cases=[],
         )
 
         # (6) Evaluate Agent
@@ -242,6 +270,7 @@ def main() -> None:
         )
         eval_score = safe_float(eval_obj.get("overall_score", 0.0), default=0.0)
         eval_feedback = str(eval_obj.get("feedback_text", "")).strip()
+        eval_outcome = "success" if _is_success(eval_score) else "failure"
 
         # (7) Write back experience (includes embedding)
         exp = Experience(
@@ -250,6 +279,7 @@ def main() -> None:
             service_response=cs_obj,
             evaluation_score=eval_score,
             evaluation_feedback=eval_feedback,
+            evaluation_outcome=eval_outcome,
             user_request_embedding=current_emb,
         )
         memory_store.append_experience(exp)
@@ -267,6 +297,8 @@ def main() -> None:
                 "cs_response": cs_obj,
                 "eval_score": eval_score,
                 "eval_feedback": eval_feedback,
+                "eval_outcome": eval_outcome,
+                "action_success_rate": action_success_rate,
                 "memory_size_after_update": memory_store.size(),
             },
         )

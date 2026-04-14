@@ -19,6 +19,7 @@ class Experience:
     service_response: Dict[str, Any]
     evaluation_score: float
     evaluation_feedback: str
+    evaluation_outcome: str  # "success" or "failure"
     user_request_embedding: List[float]
 
 
@@ -152,6 +153,7 @@ def experience_to_record(exp: Experience) -> Dict[str, Any]:
         "service_response": exp.service_response,
         "evaluation_score": exp.evaluation_score,
         "evaluation_feedback": exp.evaluation_feedback,
+        "evaluation_outcome": exp.evaluation_outcome,
         "user_request_embedding": exp.user_request_embedding,
     }
 
@@ -166,6 +168,7 @@ def experience_from_record(rec: Dict[str, Any]) -> Experience:
         service_response=dict(rec["service_response"]),
         evaluation_score=float(rec["evaluation_score"]),
         evaluation_feedback=str(rec["evaluation_feedback"]),
+        evaluation_outcome=str(rec.get("evaluation_outcome", "failure")),
         user_request_embedding=[float(x) for x in list(rec["user_request_embedding"])],
     )
 
